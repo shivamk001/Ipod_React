@@ -11,3 +11,91 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.ipod{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ipodControls{
+  position: relative;
+  height: 400px;
+  width: 400px;
+  border-radius: 1rem;
+}
+
+.ipodButtons{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  /* background-color: lightgray;
+  opacity: 0.5; */
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.menu{
+  z-index: 100;
+  position: absolute;
+  top: 10%;
+  left: 41%;
+  color: #d3d3d3;
+  cursor: pointer;
+}
+.backwardFast{
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  color: #d3d3d3;
+  cursor: pointer;
+}
+
+.forwardFast{
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 82%;
+  color: #d3d3d3;
+  cursor: pointer;
+}
+
+.playPause{
+  z-index: 100;
+  position: absolute;
+  top: 85%;
+  left: 45%;
+  color: #d3d3d3;
+  cursor: pointer;
+}
+
+.controls{
+  background-color: lightgray;
+  height: 400px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.outerCircle{
+  height: 400px;
+  width: 400px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerCircle{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-color: lightgray;
+}
+
