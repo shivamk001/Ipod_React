@@ -2,23 +2,33 @@ import { Component } from "react";
 import ZingTouch from 'zingtouch';
 
 import Controls from "./Components/Controls";
-import Screen from "./Components/Screeen";
+import Screen from "./Components/Screen";
 
 export default class App extends Component {
   constructor(){
     super();
     this.state={
       menuItems:['Cover Flow', 'Music', 'Games', 'Settings'],
-      itemNo: 0
+      itemNo: 0, 
+      page:'Menu'
     }
   }
 
-  
+  midButtonclickHandler=(event)=>{
+    event.preventDefault();
+    console.log('clicked')
+    this.setState({page: this.state.menuItems[this.state.itemNo]}, ()=>console.log('Page:', this.state.page))
+  }
 
+  menuButtonClickHandler=()=>{
+    this.setState({page: 'Menu'}, ()=>console.log('Page:', this.state.page))
+  }
+  
+  
   componentDidMount(){
 
     var zt=new ZingTouch.Region(document.body);
-    let controlsCircleElement=document.getElementById('controlsCircle');
+    let controlsCircleElement=document.getElementById("outerCircle");
     zt.bind(controlsCircleElement, 'rotate', (e)=>{
       
       let initialItemNo=this.state.itemNo
@@ -67,14 +77,17 @@ export default class App extends Component {
 
       // console.log('End');
     }, false)
+
+    // let innerCircleButton=document.getElementById('midButton')
+    // innerCircleButton.addEventListener('click',()=>console.log('Clicked'))
   }
   render(){
-    const {menuItems, itemNo}=this.state
+    const {menuItems, itemNo, page}=this.state
     console.log("App:", itemNo);
     return (
       <div className="ipod">
-        <Screen menuItems={menuItems} itemNo={itemNo}/>
-        <Controls/>
+        <Screen menuItems={menuItems} itemNo={itemNo} page={page}/>
+        <Controls midButtonclickHandler={this.midButtonclickHandler} menuButtonClickHandler={this.menuButtonClickHandler}/>
       </div>
     );
   }
