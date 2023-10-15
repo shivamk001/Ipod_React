@@ -6,7 +6,7 @@ export default class MenuItem extends Component{
         return(
             <>
                 <div className={active?"activemenuItem":"menuItem"}>
-                    <h5>{item}</h5>{active?<p>{'        >'}</p>:''}
+                    <h5>{item}</h5>{active?<p>&nbsp;&nbsp;&nbsp;&nbsp;{'>'}</p>:''}
                 </div>
             </>
         )

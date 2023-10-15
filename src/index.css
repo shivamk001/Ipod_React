@@ -5,16 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* display: flex;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 
 h4{
   margin: 0%;
@@ -29,11 +32,13 @@ hr{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 70vh;
+  width: 20vw;
 }
 
 .ipodScreen{
-  height: 200px;
-  width: 400px;
+  height: 50%;
+  width: 100%;
   background-color: lightgray;
   display: flex;
   flex-direction: column;
@@ -41,35 +46,46 @@ hr{
   align-items: center;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-}
-.screen{
-  height: 180px;
-  width: 380px;
-  background-color: white;
-  border-radius: 1rem;
-  border: 2px solid black;
+  box-shadow: 5px 10px 30px 5px darkgray;
 }
 
+.screen{
+  height: 90%;
+  width: 95%;
+  background-color: white;
+  border-radius: 1rem;
+  border: 1px solid black;
+  background-image: url('/public/cover_art.png');
+  background-repeat: 'no-repeat';
+  background-size: 100% 100%;
+}
+
+
+/* css for menu page */
+.screenMenu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90%;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+/* when an option is white this class is used*/
 .menuItem{
   margin-bottom: 0%;
   height: 20%;
+  width: 85%;
   padding-left: 10px;
   display: flex;
   align-items: center;
 }
 
-.screenMenu{
-  display: flex;
-  flex-direction: column;
-  height: 90%;
-  width: 50%;
-  flex-wrap: nowrap;
-}
-
-
+/* when an option is blue this class is used*/
 .activemenuItem{
   margin-bottom: 0%;
   height: 20%;
+  width: 85%;
   padding-left: 10px;
   background-color: #0F88CB;
   display: flex;
@@ -77,25 +93,35 @@ hr{
   color: white;
 }
 
-
+.displayPage{
+  display: "flex"; 
+  flex-direction: "column"; 
+  align-items:"center";
+  justify-content:"center"; 
+  height: "100%"; 
+  width: '100%'; 
+  background-color: 'white'; 
+  border-radius: '1rem';
+}
 
 
 
 .ipodControls{
   background-color: lightgray;
   position: relative;
-  height: 400px;
-  width: 400px;
+  height: 50%;
+  width: 100%;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 5px 10px 30px 5px darkgray;
 }
 
 .outerCircle{
-  height: 325px;
-  width: 325px;
+  height: 80%;
+  width: 60%;
   background-color: white;
   border-radius: 50%;
   display: flex;
@@ -104,14 +130,6 @@ hr{
   cursor: pointer;
 }
 
-/* .ipodButtons{
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  height: 100%;
-  width: 100%;
-  border-radius: 1rem;
-} */
 
 .ipodButtons{
   height: 100%;
@@ -123,15 +141,17 @@ hr{
 }
 
 .menuButtonDiv{
-  height: 20%;
+  height: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .forwardBackward{
+  height: 50%;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-evenly;
 }
 
@@ -148,8 +168,8 @@ hr{
 }
 
 .roundButton{
-  height: 120px;
-  width: 120px;
+  height: 90%;
+  width: 45%;
   border-radius: 50%;
   background-color: gray;
   z-index: 100;
@@ -161,67 +181,3 @@ hr{
   color: gray;
    cursor: "pointer"
 }
-
-/* .innerButton{
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  background-color: gray;
-  z-index: 100;
-  position: absolute;
-  top: 36%;
-  left: 35%;
-  border: 0;
-  cursor: pointer;
-}
-
-.menuIcon{
-  z-index: 100;
-  position: absolute;
-  top: 20%;
-  left: 41%;
-  color: gray;
-  cursor: pointer;
-}
-
-.backwardFast{
-  z-index: 100;
-  position: absolute;
-  top: 50%;
-  left: 17%;
-  color: gray;
-  cursor: pointer;
-}
-
-.forwardFast{
-  z-index: 100;
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  color: gray;
-  cursor: pointer;
-}
-
-.playPause{
-  z-index: 100;
-  position: absolute;
-  top: 75%;
-  left: 45%;
-  color: gray;
-  cursor: pointer;
-} */
-
-
-
-
-
-
-/* .midButton{
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  background-color: gray;
-  cursor: pointer;
-  border: 0;
-} */
-

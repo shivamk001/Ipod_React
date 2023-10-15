@@ -8,7 +8,7 @@ export default class Menu extends Component{
         const {menuItems, itemNo}=this.props
         //console.log("Menu:", itemNo);
         return(
-            <>
+            <div style={{height: '100%', width: '50%', backgroundColor: 'white', borderTopLeftRadius: '1rem', borderBottomLeftRadius: '1rem'}}>
                 <h4 style={{height: '10%'}}>iPod.js</h4>
                 <div className="screenMenu">
                     {menuItems.map((item, index)=>{
@@ -20,7 +20,7 @@ export default class Menu extends Component{
                         }
                     })}
                 </div>
-            </>
+            </div>
 
         )
     }

@@ -1,30 +1,64 @@
 import { Component } from "react";
 import ZingTouch from 'zingtouch';
 
-import Controls from "./Components/Controls";
-import Screen from "./Components/Screen";
+import Controls from "./Components/Controls/Controls";
+import Screen from "./Components/Screen/Screen";
 
 export default class App extends Component {
   constructor(){
     super();
     this.state={
+      //all the items which will be displayed in menu page
       menuItems:['Cover Flow', 'Music', 'Games', 'Settings'],
+
+      //all the items which will be displayed for music option
+      musicItems:['MusicPlayer', 'AllSongs', 'Artists', 'Albums'],
+
+      
       itemNo: 0, 
-      page:'Menu'
+      page:'Menu',
+      prevPage: 'Menu'
     }
   }
 
+
+  //A handler to handle for center button clicks
   midButtonclickHandler=(event)=>{
     event.preventDefault();
-    console.log('clicked')
-    this.setState({page: this.state.menuItems[this.state.itemNo]}, ()=>console.log('Page:', this.state.page))
+    console.log('Mid Button clicked', this.state.page)
+    if(this.state.page==='Menu'){
+      this.setState({prevPage: 'Menu'})
+      this.setState({page: this.state.menuItems[this.state.itemNo], itemNo: 0}, ()=>console.log('Page:', this.state.page))
+    }
+    else if(this.state.page==='Music'){
+      //don't change page
+      if(this.state.itemNo<4){
+        this.setState({prevPage: 'Music'})
+        this.setState({page: this.state.musicItems[this.state.itemNo], itemNo: 0}, ()=>console.log('Page:', this.state.page, 'PrevPage:', this.state.prevPage))
+      }
+      
+    }
   }
 
+  //a handler to handle menu button click events
   menuButtonClickHandler=()=>{
-    this.setState({page: 'Menu'}, ()=>console.log('Page:', this.state.page))
+    if(this.state.prevPage==='Music'){
+      if(this.state.page==='Music'){
+        this.setState({page: 'Menu', itemNo: 0}, ()=>console.log('Page:', this.state.page))
+      }
+      else{
+        this.setState({page: 'Music', itemNo: 0}, ()=>console.log('Page:', this.state.page))
+      }
+      
+    }
+    else if(this.state.prevPage==='Menu'){
+      this.setState({page: 'Menu', itemNo: 0}, ()=>console.log('Page:', this.state.page))
+    }
+    
   }
   
   
+  //logic to handle rotation events
   componentDidMount(){
 
     var zt=new ZingTouch.Region(document.body);
@@ -32,11 +66,8 @@ export default class App extends Component {
     zt.bind(controlsCircleElement, 'rotate', (e)=>{
       
       let initialItemNo=this.state.itemNo
-      console.log("Initial Item No:", initialItemNo)
 
       let {distanceFromOrigin}=e.detail
-      //console.log('Rotating:', distanceFromOrigin)
-        console.log("Distance:", distanceFromOrigin);
         if(distanceFromOrigin<0 && distanceFromOrigin>=-45){
           if(initialItemNo===3){
             console.log("Setting itemno to 2")
@@ -82,11 +113,11 @@ export default class App extends Component {
     // innerCircleButton.addEventListener('click',()=>console.log('Clicked'))
   }
   render(){
-    const {menuItems, itemNo, page}=this.state
-    console.log("App:", itemNo);
+    const {menuItems, itemNo, page, prevPage}=this.state
+    //console.log("App:", itemNo);
     return (
       <div className="ipod">
-        <Screen menuItems={menuItems} itemNo={itemNo} page={page}/>
+        <Screen menuItems={menuItems} itemNo={itemNo} prevPage={prevPage} page={page}/>
         <Controls midButtonclickHandler={this.midButtonclickHandler} menuButtonClickHandler={this.menuButtonClickHandler}/>
       </div>
     );
